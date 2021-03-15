@@ -5,34 +5,43 @@ import axios from 'axios'
 
 const BarChart = () =>{
 
-    const [ currentUsValues, setCurrentUsValues] = useState([]);
+    const [ historicValues, setHistoricValues] = useState([]);
     const [hospitalized, setHospitalized] = useState([]);
-    const [ death, setDeath] = useState([]);
+    const [ tracker, setTracker] = useState([]);
 
-    let currentVal = []
-    let beds = []
-    let deathCount = []
-    let dates = []
+    // let currentVal = []
+    // let beds = []
+    // let deathCount = []
+    // let dates = []
 
-
-    axios.get("https://api.covidtracking.com/v1/us/current.json")
+useEffect(()=>{
+    axios.get("https://api.covidtracking.com/v1/us/daily.json")
     .then(res =>{
-        console.log(res)
-        for(const dataObj of res.data) {
-            dates.push(parseInt(dataObj.dates))
-            beds.push(parseInt(dataObj.hospitalized))
-            deathCount.push(parseInt(dataObj.death))
-        }
-    })
+        console.log(res.data)
+        // forEach(const dataObj of res.data) {
+        //     dates.push(parseInt(dataObj.dates))
+        //     beds.push(parseInt(dataObj.hospitalized))
+        //     deathCount.push(parseInt(dataObj.death))
+        // }
+        setTracker(res.data)
+        })
     .catch(err => {
         console.log(err)
-    });
-    console.log(beds)
-    console.log(dates)
-    console.log(deathCount)
-
-
-
+        });
+    }, []) 
+    console.log(tracker)
+    let trackerData ;
+    if(tracker.length > 0){
+        trackerData = tracker.map((trace, index)=>{
+            return(
+                <div key={index}>
+                    <h1>
+                        {trace.death}
+                    </h1>
+                </div>
+            )
+        })
+    }
 
 
 
@@ -47,7 +56,7 @@ const BarChart = () =>{
                 labels: ['Reds','Blue','Yellow','Green','Purple','Orange'], 
                 datasets: [{
                     label: '# of cases',
-                    data: beds,
+                    data: trackerData,
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',
                             'rgba(54, 162, 235, 0.2)',

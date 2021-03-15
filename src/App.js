@@ -4,7 +4,7 @@ import BarChart from './components/BarChart'
 
 
 
-import axios from 'axios'
+
 import './App.css';
 
 export default function Main() {
