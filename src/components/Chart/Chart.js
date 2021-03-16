@@ -3,10 +3,8 @@ import React, { useState, useEffect} from 'react'
 import { Line } from 'react-chartjs-2'
 import axios from 'axios'
 
-const LineChart = () =>{
+const Chart = () =>{
 
-    const [ historicValues, setHistoricValues] = useState([]);
-    const [hospitalized, setHospitalized] = useState([]);
     const [ tracker, setTracker] = useState([]);
 
     // let currentVal = []
@@ -17,7 +15,7 @@ const LineChart = () =>{
 useEffect(()=>{
     axios.get("https://covid19.mathdro.id/api")
     .then(res =>{
-        console.log(res.data[0])
+        // console.log(res.data)
         // forEach(const dataObj of res.data) {
         //     dates.push(parseInt(dataObj.dates))
         //     beds.push(parseInt(dataObj.hospitalized))
@@ -29,12 +27,24 @@ useEffect(()=>{
         console.log(err)
         });
     }, []) 
-    // console.log(tracker)
+    console.log(tracker)
     
     
-    // let positiveData ;
-    // if(tracker.length > 0){positiveData = tracker.map((trace, index)=> trace.positive)}
-    // const positiveDataN = positiveData
+    let confirmed ;
+    if(tracker.length > 0){confirmed = tracker.map((trace, index)=> trace.confirmed.value)}
+    const confirmedData = confirmed
+    
+    // let death ;
+    // if(tracker.length > 0){death = tracker.map((trace, index)=> trace.deaths.value)}
+    // const deathData = death
+    
+    let recovered ;
+    if(tracker.length > 0){recovered = tracker.map((trace, index)=> trace.recovered.value)}
+    const recoveredData = recovered
+    
+    let dailySummary ;
+    if(tracker.length > 0){dailySummary = tracker.map((trace, index)=> trace.dailySummary)}
+    const dailySummaryData = dailySummary
     
     // let negativeData ;
     // if(tracker.length > 0){negativeData = tracker.map((trace, index)=> trace.negative)}
@@ -51,12 +61,12 @@ useEffect(()=>{
     
     return (
         <div>
-            {/* <Line 
+            <Line 
     data= {{
-        labels: dateDataN, 
+        labels: dailySummaryData, 
         datasets: [{
-            label: '# of Positive',
-            data: positiveDataN,
+            label: '# of Infected',
+            data: confirmedData,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)'
                     ],
@@ -66,8 +76,8 @@ useEffect(()=>{
             
                 borderWidth: 2,
             }, {
-                label: '# of Negative',
-                data: negativeDataN,
+                label: '# of Recovered',
+                data: recoveredData,
                 backgroundColor: 'yellow',
                 borderColor: 'green'
             },
@@ -77,11 +87,11 @@ useEffect(()=>{
     width={400}
     options={{
         maintainAspectRatio: false,
-    }} />  */}
+    }} /> 
 
         </div>
     )
     
 }
 
-export default LineChart;
+export default Chart;

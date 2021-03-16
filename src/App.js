@@ -1,22 +1,25 @@
-import React from 'react'
-import LineChart from './components/LineChart'
-// import state variables useState,  useEffect, 
-
-
+import React,{ Component } from 'react'
+import Chart from './components/Chart/Chart' //chart component
+import CountryPicker from './components/CountryPicker/CountryPicker' //country picker component
+import Tiles from './components/Tiles/Tiles' //tiles component
 
 
 import './App.css';
 
-export default function Main() {
-  
+
+class App extends Component {
 
 
-  return (
-    <div className="App">
-      <h1>Covid Tracker 2021 😷</h1>
-      <LineChart />
-    </div>
-  );
+  render() {
+    return (
+      <div className="App">
+        <h1>Covid Tracker 2021 😷</h1>
+        <Chart /> 
+        <CountryPicker />
+        <Tiles />
+      </div>
+    )
+  }
 }
 
-
+export default App;
