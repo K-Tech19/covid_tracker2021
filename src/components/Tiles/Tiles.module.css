@@ -1,3 +1,18 @@
-.container{
-    background-color: whitesmoke;
+.container {
+    margin: 50px 0;
+
+}
+
+.card{ 
+    margin: 0 2% !important;
+}
+
+.confirmed{
+    border-top: 5px solid rgba(4, 212, 231, 0.663);
+}
+.recovered{
+    border-top: 5px solid rgba(53, 190, 4, 0.574);
+}
+.deaths{
+    border-top: 5px solid rgba(255, 0, 0, 0.663);
 }
