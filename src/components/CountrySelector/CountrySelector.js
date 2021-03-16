@@ -1,7 +1,7 @@
 import React from 'react'
 import './CountrySelector.module.css';
 
-const CountrySelector = () =>{
+const CountrySelector = () => {
     return (
         <h2 className= 'CountrySelector'>
             CountrySelector

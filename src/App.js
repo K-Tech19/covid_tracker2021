@@ -9,21 +9,28 @@ import { fetchData } from './api'
 
 
 class App extends Component {
+  state = {
+    data: {},
+  }
+
+
 
   async componentDidMount(){
-    const data = await fetchData()
+    const fetchedData = await fetchData()
 
-    console.log(data)
+    this.setState({data: fetchedData}) // gives us access to use the data in Tiles Component
   }
 
   render() {
+
+    
     return (
       <div className={styles.container}> 
       {/* stop inferenece with other css files */}
         <h1>Covid Tracker 2021 😷</h1>
-        <Chart /> 
+        <Tiles data={this.state.data}/>
         <CountrySelector />
-        <Tiles />
+        <Chart /> 
       </div>
     )
   }

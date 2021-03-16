@@ -12,7 +12,7 @@ const Chart = (props) =>{
     // let deathCount = []
     // let dates = []
 
-    
+
 useEffect(()=>{
     axios.get("https://covid19.mathdro.id/api")
     .then(res =>{
@@ -28,7 +28,7 @@ useEffect(()=>{
         console.log(err)
         });
     }, []) 
-    console.log(tracker)
+    // console.log(tracker)
     
     
     let confirmed ;
