@@ -3,7 +3,7 @@ import React, { useState, useEffect} from 'react'
 import { Line } from 'react-chartjs-2'
 import axios from 'axios'
 
-const Chart = () =>{
+const Chart = (props) =>{
 
     const [ tracker, setTracker] = useState([]);
 
@@ -12,6 +12,7 @@ const Chart = () =>{
     // let deathCount = []
     // let dates = []
 
+    
 useEffect(()=>{
     axios.get("https://covid19.mathdro.id/api")
     .then(res =>{
