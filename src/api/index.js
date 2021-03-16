@@ -12,7 +12,7 @@ export const fetchData = async () => {
             confirmed: data.confirmed,
             recovered: data.recovered,
             deaths: data.deaths,
-            lastUpdated: data.lastUpdate,
+            lastUpdate: data.lastUpdate,
         }
 
         // console.log(tileData)

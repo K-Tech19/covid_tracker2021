@@ -23,14 +23,14 @@ class App extends Component {
 
   render() {
 
-    
+
     return (
       <div className={styles.container}> 
       {/* stop inferenece with other css files */}
         <h1>Covid Tracker 2021 😷</h1>
+        <Chart /> 
         <Tiles data={this.state.data}/>
         <CountrySelector />
-        <Chart /> 
       </div>
     )
   }
