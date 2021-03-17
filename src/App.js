@@ -11,6 +11,7 @@ import { fetchData } from './api'
 class App extends Component {
   state = {
     data: {},
+    country: '',
   }
 
 
@@ -21,6 +22,15 @@ class App extends Component {
     this.setState({data: fetchedData}) // gives us access to use the data in Tiles Component
   }
 
+  handleCountryChange = async (country) => {
+    console.log(country)
+    // fetch the data
+    // set the state
+  }
+
+
+
+
   render() {
 
 
@@ -30,7 +40,7 @@ class App extends Component {
         <h1>Covid Tracker 2021 😷</h1>
         <Chart /> 
         <Tiles data={this.state.data}/>
-        <CountrySelector />
+        <CountrySelector handleCountryChange={this.handleCountryChange} />
       </div>
     )
   }

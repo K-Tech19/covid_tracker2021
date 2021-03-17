@@ -1,4 +1,5 @@
 import axios from "axios"
+import CountrySelector from "../components/CountrySelector/CountrySelector";
 
 const url = "https://covid19.mathdro.id/api";
 
@@ -32,6 +33,19 @@ export const fetchDailyData = async ()=> {
         }))
 
         return modifiedData 
+    }
+    catch (error) {
+        console.log(error)
+    }
+}
+
+export const fetchCountries = async () => {
+    try {
+        const { data: { countries } } =  await axios.get(`${url}/countries`)
+
+
+        return countries.map((country)=> country.name) //chooses a specific country name from the data
+
     }
     catch (error) {
         console.log(error)
