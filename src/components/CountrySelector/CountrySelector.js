@@ -1,11 +1,17 @@
-import React from 'react'
-import './CountrySelector.module.css';
+import React, {useState, useEffect } from 'react'
+import { NativeSelect, FormControl } from '@material-ui-core'
+
+import styles from './CountrySelector.module.css';
 
 const CountrySelector = () => {
     return (
-        <h2 className= 'CountrySelector'>
-            CountrySelector
-        </h2>
+        <FormControl className={styleMedia.formControl}>
+            <NativeSelect>
+                <option value="global" >Global
+
+                </option>
+            </NativeSelect>
+        </FormControl>
     )
 }
 

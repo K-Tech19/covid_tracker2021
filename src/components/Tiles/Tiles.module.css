@@ -8,11 +8,14 @@
 }
 
 .confirmed{
-    border-top: 5px solid rgba(4, 212, 231, 0.663);
+    border-top: 5px solid rgba(11, 4, 231, 0.663);
+    border-bottom: 5px solid rgba(11, 4, 231, 0.663);
 }
 .recovered{
     border-top: 5px solid rgba(53, 190, 4, 0.574);
+    border-bottom: 5px solid rgba(53, 190, 4, 0.574);
 }
 .deaths{
     border-top: 5px solid rgba(255, 0, 0, 0.663);
+    border-bottom: 5px solid rgba(255, 0, 0, 0.663);
 }
