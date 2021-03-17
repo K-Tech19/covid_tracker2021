@@ -4,7 +4,7 @@ import { Line, Bar, Pie } from 'react-chartjs-2'
 import styles from './Chart.module.css'
 
 
-const Chart = (props) =>{
+const Chart = ({data, country}) =>{
 
     const [ dailyData, setDailyData] = useState([]);
 
@@ -17,9 +17,29 @@ const Chart = (props) =>{
         fetchAPI()
     },[])
 
-    // const barChart = {
-    //     console.log(barChart)
-    // }
+// console.log(data.confirmed.value,data.recovered.value, data.deaths.value)
+
+
+    const barChart = (
+        data.confirmed
+        ? (
+            <Bar 
+                data={{
+                    labels: ['Confirmed', 'Recovered', 'Deaths'],
+                    datasets: [{
+                        data: [data.confirmed.value, data.recovered.value, data.deaths.value],
+                        label: 'Confirmed',
+                        backgroundColor: ['blue', 'green', 'red',]
+                        },
+                    ],
+                }} 
+                options={{
+                    legend: {display: false},
+                    title: { display: true, text: `${country}`}
+                }}
+            
+            /> ) : null
+    )
     // const pieChart = {
     //     console.log(barChart)
     // }
@@ -48,7 +68,8 @@ const Chart = (props) =>{
 
     return (
         <div className={styles.container}>
-            {lineChart}
+            {country ? barChart : lineChart}
+        
         </div>
     )
     

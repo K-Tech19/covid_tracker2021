@@ -19,3 +19,9 @@
     border-top: 5px solid rgba(255, 0, 0, 0.663);
     border-bottom: 5px solid rgba(255, 0, 0, 0.663);
 }
+
+@media ( max-width: 770px){
+    .card{
+        margin: 2% 0 !important;
+    }
+}

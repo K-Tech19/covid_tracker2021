@@ -3,10 +3,16 @@ import CountrySelector from "../components/CountrySelector/CountrySelector";
 
 const url = "https://covid19.mathdro.id/api";
 
-export const fetchData = async () => {
+export const fetchData = async (country) => {
+    let changeableUrl = url
+
+    if (country) {
+        changeableUrl = `${url}/countries/${country}`;
+    }
+
     try { 
         //run if fetch is successful
-        const { data } = await axios.get(url)
+        const { data } = await axios.get(changeableUrl)
         // console.log(res)
         // Data we want to work with
         const tileData = { 
@@ -26,13 +32,13 @@ export const fetchData = async () => {
 export const fetchDailyData = async ()=> {
     try {
         const { data } = await axios.get(`${url}/daily`)
-        const modifiedData = data.map((dailyData)=>({
+        const alteredData = data.map((dailyData)=>({
             confirmed: dailyData.confirmed.total,
             deaths: dailyData.deaths.total,
             date: dailyData.reportDate,
         }))
 
-        return modifiedData 
+        return alteredData 
     }
     catch (error) {
         console.log(error)
@@ -42,8 +48,6 @@ export const fetchDailyData = async ()=> {
 export const fetchCountries = async () => {
     try {
         const { data: { countries } } =  await axios.get(`${url}/countries`)
-
-
         return countries.map((country)=> country.name) //chooses a specific country name from the data
 
     }

@@ -10,8 +10,8 @@ import { fetchData } from './api'
 
 class App extends Component {
   state = {
-    data: {},
-    country: '',
+    data: {}, // starts state with empty object
+    country: '', // starts state with empty string
   }
 
 
@@ -23,23 +23,26 @@ class App extends Component {
   }
 
   handleCountryChange = async (country) => {
-    console.log(country)
     // fetch the data
+    const fetchedData = await fetchData(country)
+    // console.log(fetchedData)
+
     // set the state
+    this.setState({data: fetchedData, country: country})
   }
 
 
 
 
   render() {
-
+    const { data, country } = this.state
 
     return (
       <div className={styles.container}> 
       {/* stop inferenece with other css files */}
         <h1>Covid Tracker 2021 😷</h1>
-        <Chart /> 
-        <Tiles data={this.state.data}/>
+        <Chart data={data} country={country} /> 
+        <Tiles data={data}/>
         <CountrySelector handleCountryChange={this.handleCountryChange} />
       </div>
     )
