@@ -1,7 +1,8 @@
 import axios from "axios"
-import CountrySelector from "../components/CountrySelector/CountrySelector";
+
 
 const url = "https://covid19.mathdro.id/api";
+const dailyUrl = "https://api.covidtracking.com/v1/us/daily.json"
 
 export const fetchData = async (country) => {
     let changeableUrl = url
@@ -52,6 +53,17 @@ export const fetchCountries = async () => {
 
     }
     catch (error) {
+        console.log(error)
+    }
+}
+
+export const fetchICU = async () => {
+    try {
+        const { data } =  await axios.get(`${dailyUrl}`)
+        console.log(data)
+
+    }
+    catch(error) {
         console.log(error)
     }
 }

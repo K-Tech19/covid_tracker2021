@@ -14,9 +14,9 @@ const Tiles = ({data: {confirmed, recovered, deaths, lastUpdate }}) => {
 
     return (
         <div className={styles.container}>
-            <Grid container spacing={3} justify="space-between" color="black">
+            <Grid container spacing={3} justify="center" >
                 <Grid item component={Card} xs={12} md={3} className={cx(styles.card, styles.confirmed)} >
-                    <CardContent>
+                    <CardContent >
                         <Typography color="textSecondary" gutterBottom> Confirmed </Typography>
                         <Typography variant={"h5"} >
                             <Countup

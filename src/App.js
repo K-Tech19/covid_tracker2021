@@ -2,8 +2,11 @@ import React,{ Component } from 'react'
 import Chart from './components/Chart/Chart' //chart component
 import CountrySelector from './components/CountrySelector/CountrySelector' //country picker component
 import Tiles from './components/Tiles/Tiles' //tiles component
+// import Header from './components/Header/Header'
+// import Footer from './components/Footer/Footer'
 import styles from './App.module.css' //helps add style to app / container
 import { fetchData } from './api'
+import { darkmode }  from './components/darkMode'  // experimental dark mode feature
 
 
 
@@ -13,7 +16,6 @@ class App extends Component {
     data: {}, // starts state with empty object
     country: '', // starts state with empty string
   }
-
 
 
   async componentDidMount(){
@@ -41,9 +43,10 @@ class App extends Component {
       <div className={styles.container}> 
       {/* stop inferenece with other css files */}
         <h1>Covid Tracker 2021 😷</h1>
+        <CountrySelector handleCountryChange={this.handleCountryChange} />
         <Chart data={data} country={country} /> 
         <Tiles data={data}/>
-        <CountrySelector handleCountryChange={this.handleCountryChange} />
+        <darkmode />
       </div>
     )
   }

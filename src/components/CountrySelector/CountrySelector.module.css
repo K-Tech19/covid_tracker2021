@@ -1,3 +1,6 @@
-.CountryPicker {
-    color: black;
+.formControl {
+    width: 30%;
+    margin-bottom: 30px !important;
+    isolation: isolate !important;
+    background-color: whitesmoke;
 }
